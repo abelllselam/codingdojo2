@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Details</title>
+  </head>
+  <body style="border: 2px solid black; width: 1000px; min-height: 550">
+    <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        margin-left: 20px;
+        margin-right: 20px;
+      "
+      class="container"
+    >
+      <h4>{{one_art.title}}</h4>
+      <a style="margin-top: 20px" href="/users/dashboard">dashBoard</a>
+      <a style="margin-top: 20px" href="/reset">Logout</a>
+    </div>
+    <div style="margin: 20px">
+      <form action="" method="post">
+        {% for user in one_user %}
+        <h5>Created by {{user.user.first_name}}</h5>
+        {% endfor %}
+        <p>Price: {{one_art.price}}</p>
+        <p>Number in stock: {{one_art.quantity}}</p>
+        <p>Description: {{one_art.description}}</p>
+      </form>
+    </div>
+  </body>
+</html>

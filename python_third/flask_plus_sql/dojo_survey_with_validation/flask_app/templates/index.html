@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dojo Survey</title>
+  </head>
+  <body style="border: 2px solid black; min-width: 1000px; min-height: 550">
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul class="flashes">
+      {% for message in messages %}
+      <li style="color: red;">{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %} {% block body %}{% endblock %}
+    <h1 style="text-align: center">Dojo Survey</h1>
+    <form action="/dojos/process" method="post">
+      <div>
+        <label for="name">Your name:</label>
+        <input type="text" name="name" id="name" />
+      </div>
+      <div>
+        <label for="location">Dojo location:</label>
+        <select name="location" id="location">
+          <option value=></option>
+          <option value="Chicago">Chicago</option>
+          <option value="DC">DC</option>
+          <option value="Remote">Remote</option>
+          <option value="Maryland">Maryland</option>
+        </select>
+      </div>
+      <div>
+        <label for="language">Favorite Language:</label>
+        <select name="language" id="language">
+          <option value=></option>
+          <option value="Python">Python</option>
+          <option value="C#">C#</option>
+          <option value="java">java</option>
+          <option value="javaScript">javaScript</option>
+        </select>
+      </div>
+      <div>
+        <label for="comment">Comment:</label>
+        <input
+          style="width: 200px; height: 100px"
+          type="text"
+          name="comment"
+          id="comment"
+        />
+      </div>
+      <div>
+        <button>Create</button>
+      </div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add</title>
+    <style>
+      label,
+      input {
+        display: inline-block;
+        width: 150px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body style="border: 2px solid black; width: 1000px; min-height: 600">
+    <div class="container">
+      <div style="margin: 20px; display: flex; justify-content: space-around">
+        <h3>Sasquatch Websighting</h3>
+        <div style="display: flex; flex-direction: column">
+          <p style="margin-bottom: 0">
+            {{one_user.first_name}} {{one_user.last_name}}
+          </p>
+          <a style="margin-top: 20px" href="/users/dashboard">Dashbord</a>
+          <a style="margin-top: 20px" href="/reset"><button>Logout</button></a>
+        </div>
+      </div>
+      <div style="margin: 20px">
+        <form action="/process/new" method="post">
+          {% with messages = get_flashed_messages(category_filter =
+          ["sasquatch"]) %} {% if messages %}
+          <ul class="flashes">
+            {% for message in messages %}
+            <li style="color: red">{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %} {% endwith %}
+          <div>
+            <h5>Report a Sighting</h5>
+          </div>
+          <input type="hidden" name="user_id" value="{{one_user.id}}" />
+          <div>
+            <label for="location">Location:</label>
+            <input type="text" name="location" id="location" />
+          </div>
+          <div>
+            <label for="date_of_sighting">Date of Sighting:</label>
+            <input type="date" name="date_of_sighting" id="date_of_sighting" />
+          </div>
+          <div>
+            <label for="number_of_sasquatch">Number of Sasquatchs:</label>
+            <input
+              type="number"
+              name="number_of_sasquatch"
+              id="number_of_sasquatch"
+              value="1"
+              min="1"
+            />
+          </div>
+          <div>
+            <label for="what_happened">What Happened?</label>
+            <textarea
+              name="what_happened"
+              id="what_happened"
+              cols="30"
+              rows="10"
+            ></textarea>
+          </div>
+
+          <button>Report</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

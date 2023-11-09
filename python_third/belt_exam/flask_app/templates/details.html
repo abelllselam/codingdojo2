@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Details</title>
+  </head>
+  <body style="border: 2px solid black; width: 1000px; min-height: 550">
+    <div style="margin: 20px; display: flex; justify-content: space-around">
+      <h3>Sasquatch Websighting</h3>
+      <div style="display: flex; flex-direction: column">
+        <p style="margin-bottom: 0">
+          {{one_user.first_name}} {{one_user.last_name}}
+        </p>
+
+        <a style="margin-top: 20px" href="/users/dashboard">Dashbord</a>
+        <a style="margin-top: 20px" href="/reset"><button>Logout</button></a>
+      </div>
+    </div>
+    <div style="margin: 20px">
+      <form action="" method="post">
+        {% for sasquatch in all_sasquatch_user %}
+        <h5>{{sasquatch.location}} {{sasquatch.date_of_sighting}}</h5>
+
+        <p>What Happened:</p>
+        <p>{{sasquatch.what_happened}}</p>
+        <p>Number of Sasquatches: {{sasquatch.number_of_sasquatch}}</p>
+        <h5>
+          Reported by {{sasquatch.user.first_name}}
+          {{sasquatch.user.first_name}}
+        </h5>
+        {% endfor %}
+      </form>
+    </div>
+  </body>
+</html>

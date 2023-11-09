@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login and Registration</title>
+    <style>
+      label,
+      input,
+      button {
+        display: block;
+        width: 150px;
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body style="border: 2px solid black; width: 1000px; min-height: 550">
+    <h1 style="color: blue; text-align: center">MiscreantArt</h1>
+    <div
+      class="contatiner"
+      style="display: flex; justify-content: space-around; margin: 10px"
+    >
+      <div
+        class="left_side"
+        style="border: 2px solid black; width: 400px; min-height: 300px"
+      >
+        <h3 style="margin: 10px">Readium</h3>
+
+        <form action="/users/registration" method="post">
+          {% with messages = get_flashed_messages(category_filter =
+          ["register"]) %} {% if messages %}
+          <ul class="flashes">
+            {% for message in messages %}
+            <li style="color: red">{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %} {% endwith %}
+          <div>
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name" id="first_name" />
+          </div>
+          <div>
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name" id="last_name" />
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" />
+          </div>
+          <div>
+            <label for="password">password:</label>
+            <input type="text" name="password" id="password" />
+          </div>
+          <div>
+            <label for="confirm_password">Confirm password:</label>
+            <input type="text" name="confirm_password" id="confirm_password" />
+          </div>
+          <a href="/"><button>Register</button></a>
+        </form>
+      </div>
+      <div
+        class="right_side"
+        style="border: 2px solid black; width: 400px; height: 200px"
+      >
+        <h3 style="margin-left: 10px">Log In</h3>
+        <form action="/login" method="post">
+          {% with messages = get_flashed_messages(category_filter = ["login"])
+          %} {% if messages %}
+          <ul class="flashes">
+            {% for message in messages %}
+            <li style="color: red">{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %} {% endwith %}
+          <div>
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" />
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input type="text" name="password" id="password" />
+          </div>
+          <a href="/"><button style="display: inline-block">Login</button></a>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

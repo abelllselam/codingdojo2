@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Number Game</title>
+  </head>
+  <body
+    style="
+      border: 2px solid black;
+      width: 1000px;
+      min-height: 500px;
+      margin: auto;
+    "
+  >
+    <div>
+      <h1 style="text-align: center">Welcome to the Great NUmber Game!!!</h1>
+      <h5 style="text-align: center">
+        I am thinking of a number between 1 and 100
+      </h5>
+    </div>
+    <div class="container">
+      <div style="text-align: center; background-color: green; color: white">
+        {% if message == "You did it!" %}
+        <p>The number was {{num}}</p>
+        <a href="/reset">
+          <button style="background-color: white; color: black">
+            Play again!
+          </button>
+        </a>
+        {% elif message == "Too high!" %}
+        <p style="background-color: red; color: white">Too high!</p>
+
+        {% elif message == "Too low!" %}
+        <p style="background-color: red; color: white">Too low!</p>
+
+        {% endif %}
+      </div>
+
+      <form
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin-top: 10px;
+        "
+        action="/process"
+        method="post"
+      >
+        <label for="guess">Take a guess!!! </label>
+        <input style="margin: 10px 0" type="text" name="guess" id="guess" />
+        <button>Guess</button>
+      </form>
+      <p>{{guess}}</p>
+      <p>{{num}}</p>
+    </div>
+  </body>
+</html>

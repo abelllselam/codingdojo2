@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update</title>
+    <style>
+      label,
+      input {
+        display: inline-block;
+        width: 150px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body style="border: 2px solid black; width: 1000px; min-height: 600">
+    <div class="container">
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-left: 20px;
+          margin-right: 20px;
+        "
+        class="container"
+      >
+        <h4>Update</h4>
+        <a style="margin-top: 20px" href="/users/dashboard">dashBoard</a>
+        <a style="margin-top: 20px" href="/reset">Logout</a>
+      </div>
+      <div style="margin: 20px">
+        <form action="/update/art" method="post">
+          {% with messages = get_flashed_messages(category_filter = ["art"]) %}
+          {% if messages %}
+          <ul class="flashes">
+            {% for message in messages %}
+            <li style="color: red">{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %} {% endwith %}
+          <input type="hidden" name="id" value="{{art_info.id}}" />
+          <div>
+            <label for="title">Title:</label>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              value="{{art_info.title}}"
+            />
+          </div>
+          <div>
+            <label for="description">Description:</label>
+            <textarea name="description" id="description" cols="30" rows="10">
+{{art_info.description}}</textarea
+            >
+          </div>
+          <div>
+            <label for="price">Price:</label>
+            <input
+              type="text"
+              name="price"
+              id="price"
+              value="{{art_info.price}}"
+            />
+          </div>
+          <div>
+            <label for="quantity">Quantity:</label>
+            <input
+              type="text"
+              name="quantity"
+              id="quantity"
+              value="{{art_info.quantity}}"
+            />
+          </div>
+
+          <button>Cancel</button>
+          <button>Submit</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ninja Gold</title>
+  </head>
+  <body
+    style="
+      border: 2px solid black;
+      width: 1000px;
+      height: 550px;
+      margin: auto;
+      margin-top: 20px;
+    "
+  >
+    <div class="display">
+      <p style="margin-left: 50px">Your Gold:{{total}}</p>
+    </div>
+    <div
+      class="container"
+      style="display: flex; justify-content: space-around; margin-top: 90px"
+    >
+      <form action="/process_money" method="post">
+        <div
+          class="farm"
+          style="
+            border: 2px solid black;
+            width: 150px;
+            height: 200px;
+            text-align: center;
+          "
+        >
+          <input type="hidden" name="building" value="farm" />
+          <h4>Farm</h4>
+          <p>(earns 10-20 golds)</p>
+          <button>Find Gold!</button>
+        </div>
+      </form>
+      <form action="/process_money" method="post">
+        <div
+          class="cave"
+          style="
+            border: 2px solid black;
+            width: 150px;
+            height: 200px;
+            text-align: center;
+          "
+        >
+          <input type="hidden" name="building" value="cave" />
+          <h4>Cave</h4>
+          <p>(earns 5-10 golds)</p>
+          <button>Find Gold!</button>
+        </div>
+      </form>
+      <form action="/process_money" method="post">
+        <div
+          class="house"
+          style="
+            border: 2px solid black;
+            width: 150px;
+            height: 200px;
+            text-align: center;
+          "
+        >
+          <input type="hidden" name="building" value="house" />
+          <h4>House</h4>
+          <p>(earns 2-5 golds)</p>
+          <button>Find Gold!</button>
+        </div>
+      </form>
+      <form action="/process_money" method="post">
+        <div
+          class="casino"
+          style="
+            border: 2px solid black;
+            width: 150px;
+            height: 200px;
+            text-align: center;
+          "
+        >
+          <input type="hidden" name="building" value="casino" />
+          <h4>Casino</h4>
+          <p>(earns 0 - 50 golds)</p>
+          <button>Find Gold!</button>
+        </div>
+      </form>
+    </div>
+    <div class="activity">
+      <h4 style="margin-left: 50px">Activities:</h4>
+      <div
+        style="
+          border: 2px solid black;
+          width: 800px;
+          height: 100px;
+          margin-left: 50px;
+        "
+      >
+        {% for item in message %} {% if item.startswith('Earned') %}
+        <p style="color: green">{{item}}</p>
+        {% elif item.startswith('Entered') and gold < 0 %}
+        <p style="color: red">{{item}}</p>
+        {% else %}
+        <p style="color: green">{{item}}</p>
+        {% endif %} {% endfor %}
+      </div>
+    </div>
+    <a href="/reset">
+      <button style="margin: 5px 50px; background-color: brown; color: white">
+        Reset Game
+      </button>
+    </a>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+  </head>
+  <body style="border: 2px solid black; width: 1000px; min-height: 550">
+    <div class="container">
+      <div style="margin: 20px; display: flex; justify-content: space-around">
+        <h3>Sasquatch Websighting</h3>
+        <div style="display: flex; flex-direction: column">
+          <p style="margin-bottom: 0">
+            {{one_user.first_name}} {{one_user.last_name}}
+          </p>
+          <a style="margin-top: 20px" href="/sightings/new"
+            >Report a Sighting</a
+          >
+          <a style="margin-top: 20px" href="/reset"><button>Logout</button></a>
+        </div>
+      </div>
+
+      <div style="margin-left: 180px">
+        <h5>Reported Sightings</h5>
+      </div>
+      <div
+        style="
+          border: 2px solid black;
+          width: 600px;
+          min-height: 300px;
+          margin-left: 180px;
+          margin-bottom: 20px;
+          display: flex;
+          flex-direction: row;
+        "
+        class="left_side"
+      >
+        <div style="display: flex; flex-direction: column">
+          {% for value in all_users %} {% if value.sasquatch.location != None %}
+          <div style="margin: 20px 5px">{{value.sasquatch.location}}</div>
+
+          <div style="margin: 5px 5px">
+            <p>Date of Sighting: {{value.sasquatch.date_of_sighting}}</p>
+            <p>Reported by: {{value.first_name}} {{value.last_name}}</p>
+          </div>
+          {% if one_user.id == value.sasquatch.user_id %}
+          <div style="margin: 20px 30px 20px 0px">
+            <a href="/sightings/{{value.sasquatch.id}}/edit">Edit</a>
+            <a href="/delete/{{value.sasquatch.id}}">Delete</a>
+            <p>
+              --------------------------------------------------------------
+            </p>
+          </div>
+          {% endif %} {% if one_user.id != value.sasquatch.user_id %}
+          <div style="margin: 20px 30px 20px 0px">
+            <a href="/sightings/{{value.sasquatch.id}}">View</a>
+            <p>
+              --------------------------------------------------------------
+            </p>
+          </div>
+
+          {% endif %} {% endif %} {% endfor %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

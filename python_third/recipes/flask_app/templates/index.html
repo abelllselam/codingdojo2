@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Share</title>
+  </head>
+  <style>
+    h1,
+    label,
+    input {
+      margin: 10px;
+      display: inline-block;
+    }
+    label {
+      width: 150px;
+    }
+  </style>
+  <body
+    style="
+      border: 2px solid white;
+      width: 1000px;
+      min-height: 600px;
+      margin: auto;
+      background-color: black;
+    "
+  >
+    <h1 style="background-color: bisque; border-radius: 10%">Recipe Share</h1>
+    <div
+      class="container"
+      style="
+        display: flex;
+        justify-content: space-evenly;
+        background-color: rgb(71, 69, 69);
+        min-height: 550px;
+        box-shadow: 10px 5px 5px white;
+      "
+    >
+      <div
+        class="left_side"
+        style="
+          background-color: white;
+          box-shadow: 10px 5px 5px gray;
+          min-height: 400px;
+          min-width: 400px;
+          border-radius: 5%;
+        "
+      >
+        <h4>Resister</h4>
+        <form style="margin: 20px; padding: 50px" action="" method="post">
+          <div>
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name" id="first_name" />
+          </div>
+          <div>
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name" id="last_name" />
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" />
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input type="text" name="password" id="password" />
+          </div>
+          <div>
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="text" name="confirm_password" id="confirm_password" />
+          </div>
+          <div>
+            <button>Submit</button>
+          </div>
+        </form>
+      </div>
+      <div
+        class="right_side"
+        style="
+          background-color: white;
+          box-shadow: 10px 5px 5px gray;
+          border-radius: 5%;
+          min-width: 400px;
+        "
+      >
+        <h4>Log in</h4>
+        <form action="" method="post">
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" />
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" />
+          </div>
+          <div>
+            <button>Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
