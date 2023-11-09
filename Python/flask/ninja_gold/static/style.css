@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+  width: 1000px;
+}
+
+body {
+  border: 2px solid black;
+  min-height: 500px;
+}
+.reset {
+  margin: 20px;
+}
+
+.gold_count {
+  display: flex;
+  justify-content: first baseline;
+}
+
+.gold_count_label {
+  margin: 20px;
+}
+
+.gold_count_input {
+  width: 100px;
+  height: 20px;
+  margin-right: 780px;
+  margin-top: 20px;
+  border: 2px solid black;
+}
+
+.container {
+  display: flex;
+}
+
+.farm_box {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+  margin: 20px;
+}
+.cave_box {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+  margin: 20px;
+}
+.house_box {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+  margin: 20px;
+}
+.casino_box {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+  margin: 20px;
+}
+
+h4 {
+  margin: 20px 70px;
+}
+
+p {
+  margin: 20px 40px;
+}
+.findgold_btn {
+  width: 70px;
+  height: 25px;
+  margin: 30px 60px;
+  box-shadow: 3px 3px black;
+}
+
+textarea {
+  width: 950px;
+  border: 2px solid black;
+  margin: 0 20px;
+  height: 100px;
+}
+
+h5 {
+  margin: 0 20px;
+}

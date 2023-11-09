@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Read all users</title>
+  </head>
+  <body>
+    <h1>Read all users</h1>
+    <table style="border: 2px solid black">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>email</th>
+          <th>Created_at</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{user.id}}</td>
+          <td>{{user.first_name}}</td>
+          <td>{{user.last_name}}</td>
+          <td>{{user.email }}</td>
+          <td>{{ user.created_at}}</td>
+          <div class="crud" style="display: flex">
+            <td><a href="/read_one/{{user.id}}">Show</a></td>
+            <td><a href="/user/edit/{{user.id}}">Edit</a></td>
+            <td><a href="/destroy/{{user.id}}">Delete</a></td>
+          </div>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="/create_show">Add a User</a>
+  </body>
+</html>

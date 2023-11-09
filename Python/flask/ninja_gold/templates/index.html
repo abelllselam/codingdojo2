@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='style.css') }}"
+    />
+    <title>Ninja Gold</title>
+  </head>
+  <body>
+    <form action="/process_money" method="POST" class="gold_count">
+      <div>
+        <label class="gold_count_label" for="number_gold"
+          >Your Gold:{{your_gold}}
+        </label>
+        <input
+          class="gold_count_input"
+          type="text"
+          name="number_gold"
+          id="number_gold"
+        />
+        <!-- <form action="/reset" method="POST" class="reset">
+          <input type="submit" name="submit" value="Reset" />
+        </form> -->
+      </div>
+    </form>
+    <div class="container">
+      <form action="/process_money" method="POST">
+        <div class="farm_box">
+          <h4>Farm</h4>
+          <p>(earns 10-20 golds)</p>
+          <input type="hidden" name="building" value="farm" />
+          <input class="findgold_btn" type="submit" value="Find Gold!" />
+        </div>
+      </form>
+      <form action="/process_money" method="POST">
+        <div class="cave_box">
+          <h4>Cave</h4>
+          <p>(earns 5-10 golds)</p>
+          <input type="hidden" name="building" value="cave" />
+          <input class="findgold_btn" type="submit" value="Find Gold!" />
+        </div>
+      </form>
+      <form action="/process_money" method="POST">
+        <div class="house_box">
+          <h4>House</h4>
+          <p>(earns 2-5 golds)</p>
+          <input type="hidden" name="building" value="house" />
+          <input class="findgold_btn" type="submit" value="Find Gold!" />
+        </div>
+      </form>
+      <form action="/process_money" method="POST">
+        <div class="casino_box">
+          <h4>Casino</h4>
+          <p>(earns 0-50 golds)</p>
+          <input type="hidden" name="building" value="casino" />
+          <input class="findgold_btn" type="submit" value="Find Gold!" />
+        </div>
+      </form>
+    </div>
+    <form action="">
+      <div class="textarea">
+        <h5>Activity:</h5>
+        <textarea name="game_textarea" id="game_textarea"></textarea>
+      </div>
+    </form>
+  </body>
+</html>

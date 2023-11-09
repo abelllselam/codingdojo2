@@ -1,0 +1,2 @@
+1)indent-rainbow
+2)Code Spell Checker (extention that interests me)

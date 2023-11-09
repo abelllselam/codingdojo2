@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <title>Dojo Survey</title>
+  </head>
+  <body class="w-100">
+    <div
+      class="card border-dark w-50 mx-auto mt-5"
+      style="height: 400px; box-shadow: 5px 5px black"
+    >
+      <div
+        class="card-body"
+        style="background-color: grey; border: 2px solid black; color: white"
+      >
+        <form action="/process" method="POST" style="color: white">
+          <div class="mb-3 d-flex gap-5">
+            <label
+              for="name"
+              class="form-label"
+              style="margin-top: 2px; display: inline-block; width: 150px"
+              >Name:</label
+            >
+            <input
+              name="name"
+              type="text"
+              class="form-control border-dark w-50 flex-column"
+              id="name"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3 d-flex gap-5">
+            <label
+              for="location"
+              class="form-label"
+              style="margin-top: 2px; display: inline-block; width: 150px"
+              >Dojo Location:</label
+            >
+            <select
+              name="location"
+              class="form-select w-50 border-dark flex-column"
+            >
+              <option selected></option>
+              <option value="Chicago">Chicago</option>
+              <option value="Online">Online</option>
+              <option value="New York">New York</option>
+            </select>
+          </div>
+          <div class="mb-3 d-flex gap-5">
+            <label
+              for="language"
+              class="form-label"
+              style="margin-top: 2px; display: inline-block; width: 150px"
+              >Favorite Language:</label
+            >
+            <select name="language" class="form-select w-50 border-dark">
+              <option selected></option>
+              <option value="Python">Python</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="Java">Java</option>
+              <option value="C#">C#</option>
+            </select>
+          </div>
+          <div class="mb-3 d-flex gap-5">
+            <label
+              for="comment"
+              class="form-label"
+              style="margin-top: 2px; display: inline-block; width: 150px"
+              >Comment (optional):</label
+            >
+            <textarea
+              name="comment"
+              class="form-control w-50 border-dark"
+              placeholder=""
+              id="comment"
+            ></textarea>
+          </div>
+          <div class="text-end" style="margin-right: 55px">
+            <button name="submit" id="submit" class="btn btn-primary">
+              Submit
+            </button>
+          </div>
+        </form>
+        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+            {% if messages %}                            <!-- check if there are any messages -->
+            {% for message in messages %}            <!-- loop through the messages -->
+            
+        <p>{{message}}</p>
+                           <!-- display each message in a paragraph tag -->
+                {% endfor %} {% endif %} {% endwith %}
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+											Code Snippet 1:
+var contactInfo = ["Paula", "Smith", "1234 Main Street", "St. Louis", "MO", 12345];                    
+console.log(contactInfo);								
+
+
+	   T Diagram
+variable             value
+
+ContactInfo	    ["Paula", "Smith", "1234 Main Street", "St. Louis", "MO", 12345]
+
+
+Output
+["Paula", "Smith", "1234 Main Street", "St. Louis", "MO", 12345]
+
+
+
+											Code Snippet 2:
+var produce = ["apples", "oranges"];
+var frozen = ["broccoli", "ice cream"];
+frozen.push("hashbrowns");
+console.log(frozen);
+
+	   T Diagram
+variable             value
+produce		     ["apples", "oranges"]
+frozen               ["broccoli", "ice cream"]
+
+
+Output
+["broccoli", "ice cream", "hashbrowns"]
+
+
+											Code Snippet 3:
+var movieLibrary = ["Bambi", "E.T.", "Toy Story"];
+movieLibrary.push("Zorro");
+movieLibrary[1] = "Beetlejuice";
+console.log(movieLibrary);
+
+	   T Diagram
+variable             value
+movieLibrary	     ["Bambi", "E.T.", "Toy Story"]
+
+Output
+["Bambi", "Beetlejuice", "Toy Story", "Zorro"]

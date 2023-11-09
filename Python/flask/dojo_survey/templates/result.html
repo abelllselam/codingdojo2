@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <title>Dojo Survey</title>
+  </head>
+  <body class="w-100">
+    <div
+      class="card border-dark w-50 mx-auto mt-5"
+      style="height: 400px; box-shadow: 5px 5px black"
+    >
+      <div
+        class="card-body"
+        style="background-color: grey; border: 2px solid black; color: white"
+      >
+        <h2>Submitted Info</h2>
+        <div style="color: white; margin-left: 50px">
+          <div class="mb-3 d-flex gap-5">
+            <p
+              for="name"
+              style="margin-top: 2px; display: inline-block; width: 150px"
+            >
+              Name:
+            </p>
+            <p
+              type="email"
+              class="border-dark w-50 flex-column"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              p
+            >
+              {{name}}
+            </p>
+          </div>
+          <div class="mb-3 d-flex gap-5">
+            <p
+              for="name"
+              style="margin-top: 2px; display: inline-block; width: 150px"
+            >
+              Dojo Location:
+            </p>
+            <p
+              type="email"
+              class="border-dark w-50 flex-column"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              p
+            >
+              {{location}}
+            </p>
+          </div>
+          <div class="mb-3 d-flex gap-5">
+            <p
+              for="name"
+              style="margin-top: 2px; display: inline-block; width: 150px"
+            >
+              Favorite Language:
+            </p>
+            <p
+              type="email"
+              class="border-dark w-50 flex-column"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              p
+            >
+              {{language}}
+            </p>
+          </div>
+          <div class="mb-3 d-flex gap-5">
+            <p
+              for="name"
+              style="margin-top: 2px; display: inline-block; width: 150px"
+            >
+              Comment:
+            </p>
+            <p
+              type="email"
+              class="border-dark w-50 flex-column"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              p
+            >
+              {{comment}}
+            </p>
+          </div>
+          <div class="text-end" style="margin-right: 55px">
+            <a href="/" class="btn btn-primary">Go back</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

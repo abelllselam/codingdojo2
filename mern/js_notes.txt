@@ -1,0 +1,61 @@
+How to start a react app
+- npx create-react-app  => in the folder i am working on
+- Do not name the react file the same name as the folder
+- the naming is lowercase and separated by - or _
+- Going forward we will always use developer tools => right click and inspect then console. Always have this open!
+
+After starting react this are the two files we care about are:
+- App.js and packages.json
+- all react components are Pascal case
+- rafce  - snipit for creating a component
+
+
+To Submit
+- explorer . in gitbash
+- highlight everything except node_modules and then zip the files then submit.
+
+
+The react scripts:
+<script crossorigin="" src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin="" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> 
+
+- return (
+for multiple line returns 
+)
+
+or at least one thing must be on the same line;
+
+return <div>
+
+</div>
+
+state: Anything that changes needs to have a state.
+
+
+
+How to start a react app
+- npx create-react-app  => in the folder i am working on
+- Do not name the react file the same name as the folder
+- the naming is lowercase and separated by - or _
+- Going forward we will always use developer tools => right click and inspect then console. Always have this open!
+
+After starting react this are the two files we care about are:
+- App.js and packages.json
+
+
+10/30/2023
+JSON - Javascript object notation
+REST (Representational State Transfer)- if you route has aroute that includes api then its considered REST API- post/api/users 
+Check the rest_api.png
+
+
+To install AXIOS:
+stop the application and then make sure that you are on the same folder level as package.jason.
+then npm install axios
+AXIOS - wraps the res in its own .data key - so it will be in response.data
+
+10/31/2023
+npm install react-router-dom before working on the routing and we also need to be on the same folder level as package.jason
+Then import browser rapper
+
+

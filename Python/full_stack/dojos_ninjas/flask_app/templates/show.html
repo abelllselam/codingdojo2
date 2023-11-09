@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dojos and Ninjas</title>
+  </head>
+  <body>
+    <div class="container">
+      <h3>{{dojos_info.name}} Ninjas</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for info in dojos_info.many_ninjas %}
+          <tr>
+            <td>{{info.first_name}}</td>
+            <td>{{info.last_name}}</td>
+            <td>{{info.age}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <a href="/dojos">Home</a>
+    </div>
+  </body>
+</html>
