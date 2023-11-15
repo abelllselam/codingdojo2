@@ -70,7 +70,7 @@ Steps to create a express server:
 	- in server.js - 
 		const express = require("express");
 		const app = express();
-		const PORT = 8000; (it can be any port it just by convention)
+		const PORT = 8000; //(it can be any port it just by convention)
 
 		// make sure these lines are above any app.get or app.post code blocks
 		//MIDDLEWARE
