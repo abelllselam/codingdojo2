@@ -1,4 +1,4 @@
-How to start a react app
+How to start a react app -
 - npx create-react-app  => in the folder i am working on
 - Do not name the react file the same name as the folder
 - the naming is lowercase and separated by - or _
@@ -57,5 +57,48 @@ AXIOS - wraps the res in its own .data key - so it will be in response.data
 10/31/2023
 npm install react-router-dom before working on the routing and we also need to be on the same folder level as package.jason
 Then import browser rapper
+
+
+11/01/2023
+
+Steps to create a express server:
+
+1. create server.js for express (touch server.js or create server.js)express is the server side node serverside - It has nothing to do with react at this point.
+2. npm init -y - the y is to say everything yes
+3. npm i express - must be installed parallel to the package.jason
+	-create a file called server.js which needs to be parallel to the package.json - this file will be the entry point(main) in the package.jason file.
+	- in server.js - 
+		const express = require("express");
+		const app = express();
+		const PORT = 8000; (it can be any port it just by convention)
+
+		// make sure these lines are above any app.get or app.post code blocks
+		//MIDDLEWARE
+		app.use( express.json() ); //parse
+		app.use( express.urlencoded({ extended: true }) ); //if the database sends you anything weird still parse the data
+
+
+		//Routes
+		app.get("/api", (req, res) => {
+			res.json({message: "Hello World" });
+		
+		});
+
+		//To start a server at the very bottom of the file
+		app.listen(PORT, () => console.log(`>>> Server is up and running on PORT $(PORT) and is listening for REQuests to RESpond to`))
+	
+	-To run this server file.
+		-node server.js
+		-go to localhost:8000/api - and you should see "Hello World"
+
+4. nodemon server.js - so that we dont have to restart the server everytime. 
+
+
+nodemon - node monitor
+
+5. Start postman - used when to avoid writing code to test the serverside. The actual database is still not up and running we can add, delete and patch new infor using postman to test things - In postman you can direct the API call to it and then access the API info from here instead of direct address 
+	-The first thing is to create a new tab then type the address in the URL text area.
+	- to post it is suggested that you select body -> row -> JSON
+
 
 
