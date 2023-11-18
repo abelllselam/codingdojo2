@@ -309,7 +309,8 @@ ____________------------------------------The second folder we will need is the 
     		</BrowserRouter>
 
 
-
+6. Have a Main.jsx file to make the axios calls.
+7. npm start - to start the react app
 
 
 
