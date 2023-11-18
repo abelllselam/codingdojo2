@@ -5,22 +5,20 @@ import axios from "axios";
 const Update = () => {
   const navigate = useNavigate();
 
-  const { id } = useParams();
-
   const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
-  const [releaseYear, setReleaseYear] = useState(1900);
-  const [seen, setSeen] = useState(false);
+  const [price, setPrice] = useState(1);
+  const [description, setDescription] = useState("");
+
+  const { id } = useParams();
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/movies/" + id)
+      .get("http://localhost:8000/api/products/" + id)
       .then((res) => {
         console.log(res.data);
         setTitle(res.data.title);
-        setImage(res.data.image);
-        setReleaseYear(res.data.releaseYear);
-        setSeen(res.data.seen);
+        setPrice(res.data.price);
+        setDescription(res.data.description);
       })
       .catch((err) => console.log(err));
   }, [id]);
@@ -30,47 +28,43 @@ const Update = () => {
     console.log("cool");
     const tempObjectToSendToDB = {
       title,
-      image,
-      releaseYear,
-      seen,
+      price,
+      description,
     };
 
     axios
-      .patch("http://localhost:8000/api/movies/" + id, tempObjectToSendToDB)
+      .patch("http://localhost:8000/api/products/" + id, tempObjectToSendToDB)
       .then((res) => {
         console.log("✅✅✅✅✅", res.data);
         navigate("/");
       })
       .catch((err) => console.log("❌❌❌❌", err));
   };
+
   return (
     <div>
+      <h1>Edit Product</h1>
       <form onSubmit={submitHandler}>
         <div>
           title:
           <input value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
         <div>
-          image:
-          <input value={image} onChange={(e) => setImage(e.target.value)} />
-        </div>
-        <div>
-          release year:
+          Price:
           <input
             type="number"
-            value={releaseYear}
-            onChange={(e) => setReleaseYear(e.target.value)}
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
           />
         </div>
         <div>
-          have you seen this?
+          Description:
           <input
-            type="checkbox"
-            checked={seen}
-            onChange={(e) => setSeen(e.target.checked)}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        <button>Submit</button>
+        <button>Edit</button>
       </form>
     </div>
   );
