@@ -111,7 +111,8 @@ How to setup the server folder:
 
 The actual terminal comands after cd into the server folder:
 4.npm init -y
-5.npm install mongoose express dotenv
+5.npm install mongoose express dotenv cors //The cors is the part where it tells the server that it is pkay for port 3000 to access stuff from the server.
+
 6.Add this code - require('dotenv').config(); - inside the server.js - This is just so that the server file would rung the .env file where out secret password and other sensetive information is stored
 7.create mongoose.config.js file in the config folder - we use this to connect to the database
 
@@ -193,10 +194,12 @@ module.exports = User;
 
 const Movie = require("../models/movie.model");
 
+const Movie = require("../models/movie.model");
+
 module.exports.findAllMovies = (req, res) => {
   Movie.find()
     .then((allDaMovies) => {
-      res.json({ movies: allDaMovies });
+      res.json(allDaMovies);
     })
     .catch((err) => {
       res.json(err);
@@ -206,7 +209,7 @@ module.exports.findAllMovies = (req, res) => {
 module.exports.findOneSingleMovie = (req, res) => {
   Movie.findOne({ _id: req.params.id })
     .then((oneSingleMovie) => {
-      res.json({ movie: oneSingleMovie });
+      res.json(oneSingleMovie);
     })
     .catch((err) => {
       res.json(err);
@@ -216,7 +219,7 @@ module.exports.findOneSingleMovie = (req, res) => {
 module.exports.createNewMovie = (req, res) => {
   Movie.create(req.body)
     .then((newlyCreatedMovie) => {
-      res.json({ movie: newlyCreatedMovie });
+      res.json(newlyCreatedMovie);
     })
     .catch((err) => {
       res.json(err);
@@ -229,7 +232,7 @@ module.exports.updateExistingMovie = (req, res) => {
     runValidators: true,
   })
     .then((updatedMovie) => {
-      res.json({ movie: updatedMovie });
+      res.json(updatedMovie);
     })
     .catch((err) => {
       res.json(err);
@@ -239,12 +242,13 @@ module.exports.updateExistingMovie = (req, res) => {
 module.exports.deleteAnExistingMovie = (req, res) => {
   Movie.deleteOne({ _id: req.params.id })
     .then((result) => {
-      res.json({ result: result });
+      res.json(result);
     })
     .catch((err) => {
       res.json(err);
     });
 };
+
 
 
 The above looks like a promise (API request and response. However, it is not a promise per the docs)
@@ -271,9 +275,92 @@ module.exports = app => {
   //  app.get('/api/users/allusers', UserController.findAllUsers);
 //}
 
+14.The server.js file should contain the following to run react app
+
+const express = require("express");
+const cors = require("cors");
+const app = express();
+require("dotenv").config();
+const port = process.env.PORT;
+
+require("./config/mongoose.config");
+
+app.use(express.json(), express.urlencoded({ extended: true }));
+app.use(cors());
+
+const AllMyMovieRoutes = require("./routes/movie.routes");
+AllMyMovieRoutes(app);
+
+app.listen(port, () => console.log(`Listening on port: ${port}`));
 
 
-14.
+
+**********************************************************************************************************************************************************************************************************************************************************************
+____________------------------------------The second folder we will need is the React folder. In here we will create the react folder.
+
+1. run another terminal which you can rename client
+2. npx create-react-app client -  parallel to the server folder
+3. Then add the dependancies - npm i axios react-router-dom
+4. Then make sure to import BrowserRouter in the index.js file inside the src folder - import { BrowserRouter } from "react-router-dom";
+5. Then wrap <App/>
+	just like this:
+		<BrowserRouter>
+      			<App />
+    		</BrowserRouter>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
