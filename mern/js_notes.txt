@@ -101,4 +101,170 @@ nodemon - node monitor
 	- to post it is suggested that you select body -> row -> JSON
 
 
+11/16/2023
+
+How to setup the server folder:
+
+1.create a server folder
+2.create the config, controllers,models, routes (mkdir config controllers models routes) everything must be in the server folder.
+3.Also, have the server.js and .env files in the server folder
+
+The actual terminal comands after cd into the server folder:
+4.npm init -y
+5.npm install mongoose express dotenv
+6.Add this code - require('dotenv').config(); - inside the server.js - This is just so that the server file would rung the .env file where out secret password and other sensetive information is stored
+7.create mongoose.config.js file in the config folder - we use this to connect to the database
+
+8.Bring the connection string from the mongo atlas and then put the below code in the mongoose.cinfig.js - select connect -> drivers -> then copy the string
+shoudld also have the following the file: 
+const mongoose = require('mongoose');
+const dbName = process.env.DB;
+const username = process.env.ATLAS_USERNAME;
+const pw = process.env.ATLAS_PASSWORD;
+const uri = mongodb+srv://root:<password>@cluster0.whqor0t.mongodb.net/?retryWrites=true&w=majority
+    .then(() => console.log("Established a connection to the database"))
+    .catch(err => console.log("Something went wrong when connecting to the database", err));
+
+
+
+The uri needs to be updated with the string from the mongo atlas.
+
+
+9.Put the following in the .env file and update the DB, username and password accordingly
+
+PORT=8000
+DB=my_db
+# mongo atlas connection
+ATLAS_USERNAME=YOUR_ATLAS_USERNAME
+ATLAS_PASSWORD=YOUR_ATLAS_PASSWORD
+
+10.In the models folder create a model: movie.model.js and then paste the code below: (the movie.model.js - part the movie is what ever the db we are trying to create, update throughout accordingly)
+
+The following is including the validation:
+
+const mongoose = require("mongoose");
+
+//the model -the rules the entries or inserts need to follow
+
+const MovieSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: [true, "title is required"], //insted of title is required we can use "{PATH} is required"
+    minLength: [3, "{PATH} must have at least 3 chars"],
+  },
+  image: {
+    type: String,
+  },
+  releaseYear: {
+    type: Number,
+    required: [true, "Please provide a date"],
+    min: [1895, "must be valid"],
+  },
+  seen: {
+    type: Boolean,
+    default: false,
+  },
+}, {timestamps: true}); //that is to automatically create the created_at and updated_at automatically
+
+const Movie = mongoose.model("Movie", MovieSchema);
+
+module.exports = Movie;
+
+
+11.In the controllers folder create a file called whatevernameyouchoseforthemodel.controller.js - this will house all the logic for CRUD movies in this case
+
+12.Then paste the following into the controller file. After that highlight the movie singlular noun and then ctrl + Shift + L then make the change to what ever your desired name is:
+
+const Movie = require("../models/movie.model");
+
+module.exports.findAllMovies = (req, res) => {
+  Movie.find()
+    .then((allDaMovies) => {
+      res.json({ movies: allDaMovies });
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+};
+
+module.exports.findOneSingleMovie = (req, res) => {
+  Movie.findOne({ _id: req.params.id })
+    .then((oneSingleMovie) => {
+      res.json({ movie: oneSingleMovie });
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+};
+
+module.exports.createNewMovie = (req, res) => {
+  Movie.create(req.body)
+    .then((newlyCreatedMovie) => {
+      res.json({ movie: newlyCreatedMovie });
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+};
+
+module.exports.updateExistingMovie = (req, res) => {
+  Movie.findOneAndUpdate({ _id: req.params.id }, req.body, {
+    new: true,
+    runValidators: true,
+  })
+    .then((updatedMovie) => {
+      res.json({ movie: updatedMovie });
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+};
+
+module.exports.deleteAnExistingMovie = (req, res) => {
+  Movie.deleteOne({ _id: req.params.id })
+    .then((result) => {
+      res.json({ result: result });
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+};
+
+
+The above looks like a promise (API request and response. However, it is not a promise per the docs)
+
+13.In the routes folder create a file whatevernameyouchoseforthemodel.routes.js - this will be responsible for all the routes dealing with the model. It is importing everything that is being imported from the controller as seen in the code below that needs to be pasted in the file.
+
+
+const UserController = require('../controllers/user.controller');
+ 
+module.exports = app => {
+    app.get('/api/users', UserController.findAllUsers);
+    app.get('/api/users/:id', UserController.findOneSingleUser);
+    app.patch('/api/users/:id', UserController.updateExistingUser);
+    app.post('/api/users', UserController.createNewUser);
+    app.delete('/api/users/:id', UserController.deleteAnExistingUser);
+}
+
+//********************************************************************************************The order of routes is important! for instance the following will never get to the allusers route because of the :id
+
+//const UserController = require('../controllers/user.controller');
+ 
+//module.exports = app => {
+  //  app.get('/api/users/:id', UserController.findOneSingleUser);
+  //  app.get('/api/users/allusers', UserController.findAllUsers);
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
