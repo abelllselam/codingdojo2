@@ -116,14 +116,25 @@ The actual terminal comands after cd into the server folder:
 7.create mongoose.config.js file in the config folder - we use this to connect to the database
 
 8.Bring the connection string from the mongo atlas and then put the below code in the mongoose.cinfig.js - select connect -> drivers -> then copy the string
-shoudld also have the following the file: 
-const mongoose = require('mongoose');
+
+const mongoose = require("mongoose");
 const dbName = process.env.DB;
 const username = process.env.ATLAS_USERNAME;
 const pw = process.env.ATLAS_PASSWORD;
-const uri = mongodb+srv://root:<password>@cluster0.whqor0t.mongodb.net/?retryWrites=true&w=majority
-    .then(() => console.log("Established a connection to the database"))
-    .catch(err => console.log("Something went wrong when connecting to the database", err));
+const uri = `mongodb+srv://${username}:${pw}@cluster0.whqor0t.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+mongoose
+  .connect(uri)
+  .then(() =>
+    console.log(
+      `📡📡📡📡📡🪐🪐🪐Established a connection to the ${dbName} database`
+    )
+  )
+  .catch((err) =>
+    console.log(
+      "👎👎👎👎👎👎Something went wrong when connecting to the database",
+      err
+    )
+  );
 
 
 
@@ -146,29 +157,34 @@ const mongoose = require("mongoose");
 
 //the model -the rules the entries or inserts need to follow
 
-const MovieSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: [true, "title is required"], //insted of title is required we can use "{PATH} is required"
-    minLength: [3, "{PATH} must have at least 3 chars"],
-  },
-  image: {
-    type: String,
-  },
-  releaseYear: {
-    type: Number,
-    required: [true, "Please provide a date"],
-    min: [1895, "must be valid"],
-  },
-  seen: {
-    type: Boolean,
-    default: false,
-  },
-}, {timestamps: true}); //that is to automatically create the created_at and updated_at automatically
+const mongoose = require("mongoose");
 
-const Movie = mongoose.model("Movie", MovieSchema);
+const UserSchema = new mongoose.Schema(
+  {
+    first_name: {
+      type: String,
+      required: [true, "First name is required"],
+      minlength: [6, "First name must be at least 6 characters long"]
+    },
+    last_name: {
+      type: String,
+      required: [true, "Last name is required"],
+      maxlength: [20, "Last name must be at least 6 characters long"]
+    },
+    age: {
+      type: Number,
+      min: [1, "You must be at least 1 or older to register"],
+      max: [150, "You must be at most 149 years old to register"]
+    },
+    email: { type: String, required: [true, "Email is required"] }
+  },
+  { timestamps: true }
+);
 
-module.exports = Movie;
+const User = mongoose.model("User", UserSchema);
+
+module.exports = User;
+
 
 
 11.In the controllers folder create a file called whatevernameyouchoseforthemodel.controller.js - this will house all the logic for CRUD movies in this case
