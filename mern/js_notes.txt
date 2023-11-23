@@ -154,7 +154,6 @@ ATLAS_PASSWORD=YOUR_ATLAS_PASSWORD
 
 The following is including the validation:
 
-const mongoose = require("mongoose");
 
 //the model -the rules the entries or inserts need to follow
 
@@ -192,7 +191,7 @@ module.exports = User;
 
 12.Then paste the following into the controller file. After that highlight the movie singlular noun and then ctrl + Shift + L then make the change to what ever your desired name is:
 
-const Movie = require("../models/movie.model");
+
 
 const Movie = require("../models/movie.model");
 
@@ -222,7 +221,7 @@ module.exports.createNewMovie = (req, res) => {
       res.json(newlyCreatedMovie);
     })
     .catch((err) => {
-      res.json(err);
+      res.status(400).json(err);
     });
 };
 
@@ -313,8 +312,11 @@ ____________------------------------------The second folder we will need is the 
 7. npm start - to start the react app
 
 
+11/18/2023
+RE_RUN - after node_module deletion:
 
-
+If the node_module is deleted and you want to start the project.
+1. npm i - on both server and client side parallel to the package.json
 
 
 

@@ -26,7 +26,7 @@ module.exports.createNewMovie = (req, res) => {
       res.json(newlyCreatedMovie);
     })
     .catch((err) => {
-      res.json(err);
+      res.status(400).json(err);
     });
 };
 
