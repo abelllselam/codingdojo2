@@ -1,0 +1,5 @@
+- Very important to pascal case all java  files i.e JavaBasic
+- Compile firt then run
+	- to compile javac file.java
+	- then the class file is created which means compiled and now we run it
+	- java file - we are running the class that is created from file.java
