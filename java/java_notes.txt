@@ -3,3 +3,7 @@
 	- to compile javac file.java
 	- then the class file is created which means compiled and now we run it
 	- java file - we are running the class that is created from file.java
+	- File and class names must match and must be pascal case
+
+11/28/2023
+-Ctrl + shift + O (letter) - to bring all the dependencies (imports) in the spring tool.
