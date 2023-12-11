@@ -7,3 +7,47 @@
 
 11/28/2023
 -Ctrl + shift + O (letter) - to bring all the dependencies (imports) in the spring tool.
+
+12/10/2023
+	To start with Spring boot project:
+
+- File -> New -> Spring Starter Project
+	- Name should be the project name
+	- group should be the reverse domain and the package must be the same as the group
+- Next -> 
+	- It should be the latest Spring Boot version
+	- Should bring in or select "Spring Boot DevTools" and "Spring Web"
+- select Finish
+
+	After the initial setup:
+- The JSP files are to be created in the src -> main -> webapp
+	- right-clicking on the 'webapp' folder, selecting 'New', (other) searching for 'jsp' and selecting 'JSP File' and name the 	jsp file. 
+- There are three minor configuration steps before we can pass data from our controller to the .jsp file:
+	- Create the src/main/webapp folder if it does not exist
+	- Create the src/main/webapp/WEB-INF folder
+	- Edit the src/main/resources/applications.properties file to contain the following code:
+		- spring.mvc.view.prefix=/WEB-INF/
+
+
+
+
+imports: 
+<!-- New line below to use the JSP Standard Tag Library to use c:out and other tags-->
+	- <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
+- Must place <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> at the top of every JSP file for JSTL use.
+
+- Add the following in the JSP file to render CSS and JS files and the location of the files must be in the src/main.resources/static/css or js folder:
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script type="text/javascript" src="/js/app.js"></script>
+
+- For bootstrap add the following in the head of the jsp:
+	<!-- for Bootstrap CSS -->
+	<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<!-- YOUR own local CSS -->
+	<link rel="stylesheet" href="/css/main.css"/>
+	<!-- For any Bootstrap that uses JS -->
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+- 
+
+
+

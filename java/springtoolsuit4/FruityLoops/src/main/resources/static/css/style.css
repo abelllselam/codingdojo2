@@ -1,0 +1,14 @@
+@charset "ISO-8859-1";@charset "ISO-8859-1";
+table {
+	border: 10px pink solid;
+	border-collapse: collapse;
+}
+
+th, td {
+	border: 1px solid pink;
+	
+}
+
+h1 {
+	color: deeppink;
+}
