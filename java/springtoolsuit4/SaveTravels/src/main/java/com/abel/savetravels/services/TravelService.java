@@ -33,5 +33,13 @@ public class TravelService {
 			return null;
 		}
 	}
+	
+	public Travel updateTravel(Travel t) {
+		return travelRepository.save(t);
+	}
+	
+	public void deleteTravel(Long id) {
+		travelRepository.deleteById(id);
+	}
 
 }

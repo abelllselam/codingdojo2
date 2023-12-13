@@ -1,5 +1,6 @@
 package com.abel.savetravels.models;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -12,7 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -33,12 +34,12 @@ public class Travel {
     private String vendor;
   
     @NotNull(message="You have to provide amount")
-    @Min(value = 1, message="The minimum amount must be at least one dollar")
-    private double amount;
+    @DecimalMin(value="1", message="The minimum amount must be at least one dollar")
+    private BigDecimal amount;
     
     @NotEmpty(message="Description should not be empty")
     @Size(min = 2, max = 200, message="Description should at least be 2 characters long")
-    private String desc;
+    private String description;
     
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
@@ -51,11 +52,11 @@ public class Travel {
     	
     }
     
-    public Travel(String expense, String vendor, double amount, String desc) {
+    public Travel(String expense, String vendor, BigDecimal amount, String description) {
     	this.expense = expense;
     	this.vendor = vendor;
     	this.amount = amount;
-    	this.desc = desc;
+    	this.description = description;
     }
     
     @PrePersist
@@ -91,20 +92,20 @@ public class Travel {
 		this.vendor = vendor;
 	}
 
-	public double getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String desc) {
+		this.description = desc;
 	}
 
 	public Date getCreatedAt() {
