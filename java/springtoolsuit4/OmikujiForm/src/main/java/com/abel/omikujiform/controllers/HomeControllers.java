@@ -31,12 +31,13 @@ public class HomeControllers {
 	
 	@GetMapping("/omikuji/show")
 	public String showForm(Model model, HttpSession session) {
-		Integer number = (Integer) session.getAttribute("number");
-		String city = (String) session.getAttribute("city");
-		String person = (String) session.getAttribute("person");
-		String hobby = (String) session.getAttribute("hobby");
-		String thing = (String) session.getAttribute("thing");
-		String say = (String) session.getAttribute("say");
+//		This is optional when doing the session. The above method handles the session which means it is available for all methods.
+//		Integer number = (Integer) session.getAttribute("number");
+//		String city = (String) session.getAttribute("city");
+//		String person = (String) session.getAttribute("person");
+//		String hobby = (String) session.getAttribute("hobby");
+//		String thing = (String) session.getAttribute("thing");
+//		String say = (String) session.getAttribute("say");
 		
 		return "show.jsp";
 	}
