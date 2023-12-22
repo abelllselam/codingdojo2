@@ -1,0 +1,35 @@
+/* Resetting any automatic margins */
+body,
+iframe,
+nav,
+span {
+  margin: 0;
+  padding: 0;
+}
+
+/* The body height and width with border info */
+.body {
+  width: 1000px;
+  min-height: 700px;
+  margin: auto !important;
+  border: 2px solid black;
+}
+
+/* Nav font size and weight */
+nav {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+/* The main container */
+.container_main {
+  border: 2px solid black;
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* controlling the iframe height */
+
+iframe {
+  height: 71px;
+}
